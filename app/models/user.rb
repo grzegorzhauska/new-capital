@@ -29,12 +29,19 @@ class User < ActiveRecord::Base
 
   # TODO: Max 3 tries
   def phone_number_verify!(code)
-    if phone_number_code && (phone_number_code == code)
-      phone_number_verified!
-      true
-    else
-      false
+    success = phone_number_code &&
+              (phone_number_code == code)
+    if success
+      update_attributes!(phone_number_status: :phone_number_verified,
+                         phone_number_code: nil)
+      User
+        .where(phone_number: phone_number)
+        .where
+        .not(id: id).each do |u|
+        u.phone_number_not_verified!
+      end
     end
+    success
   end
 
   def verified?
