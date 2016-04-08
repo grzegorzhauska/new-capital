@@ -1,0 +1,30 @@
+.box
+  .box-header
+    %span.title= 'Transfers'
+    %ul.box-toolbar
+
+  .box-content
+    %table.table.table-normal
+      %thead
+        %tr
+          %th
+            From
+          %th
+            To
+          %th
+            Amount
+          %th
+            After tax
+      %tbody
+        - @transfers.each do |transfer|
+          %tr
+            %td
+              = transfer.from_id
+            %td
+              = transfer.to_id
+            %td
+              = transfer.amount
+            %td
+              = transfer.after_tax
+    / .table-footer
+    /   = paginate @companies

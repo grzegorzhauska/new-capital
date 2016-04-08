@@ -1,0 +1,25 @@
+.container
+  %p
+    = form_tag regular_transfers_path do
+      = field_set_tag do
+        = label_tag :to_id, 'account number:'
+        = number_field_tag :to_id
+        = label_tag :amount, 'amount:'
+        = number_field_tag :amount
+        = submit_tag 'Transfer'
+  %p
+    balance:
+    = @personal_account.balance
+  %p
+    credit limit:
+    = @personal_account.limit
+  %p
+    volume:
+    = @personal_account.volume
+  %p
+    number:
+    = @personal_account.id
+  %p
+    limiting function: <br>
+    volume <= 30000, y = x <br>
+    volume > 30000, y = 0.1 x <br>

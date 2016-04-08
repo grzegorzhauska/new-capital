@@ -1,0 +1,16 @@
+%h3
+  = t('users.profile.basic_settings')
+= form_for @profile, url: profile_path, html: { method: :put } do |f|
+  - if @profile.errors.any?
+    %ul
+      - @profile.errors.full_messages.each do |msg|
+        %li
+          = msg
+  = f.text_field :first_name
+  %br
+  = f.text_field :last_name
+  %br
+  = f.text_field :phone_number
+  %br
+  / TODO: Messy translation missing html span
+  = f.submit "#{t('users.profile.update')}"
