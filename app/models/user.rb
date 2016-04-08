@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
     return false unless self.update_attribute(:phone_number_code,
                                               1000 + rand(8999))
 
-    nexmo = Nexmo::Client.new(key: 'key',
-                              secret: 'secret')
+    nexmo = Nexmo::Client.new(key: Figaro.env.nexmo_key,
+                              secret: Figaro.env.nexmo_secret)
 
     response = nexmo.send_message({
       from: 'AppName',
