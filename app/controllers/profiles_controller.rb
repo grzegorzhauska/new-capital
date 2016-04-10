@@ -21,7 +21,10 @@ class ProfilesController < ApplicationController
   end
 
   def phone_number_code_verify
-    current_user.phone_number_verify!(params[:phone_number_code])
+    unless current_user.phone_number_verify!(params[:phone_number_code])
+      flash[:notice] = [t('users.profile.phone_number_code.wrong_code'),
+                        t('users.profile.phone_number_code.deleted')].join(', ')
+    end
     # render status: 200, json: "Phone number verified."
     # render status: 422, json: "Wrong code"
     redirect_to action: :show

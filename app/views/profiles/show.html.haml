@@ -1,22 +1,31 @@
-%ul
-  %li= link_to 'Edit', edit_profile_path
-  %li= link_to 'Edit advanced', edit_user_registration_path
+.container
+  .row
+    .col-md-3
+      .btn-group
+        = button_to "Edit", edit_profile_path, method: :get, class: 'btn btn-default'
+        = button_to "Edit advanced", edit_user_registration_path, method: :get, class: 'btn btn-default'
 
-%h3
-  = t('users.profile.basic_settings')
-  First name:
-  = @profile.first_name
-  %br
-  Last name:
-  = @profile.last_name
-  %br
-  Phone number:
-  = @profile.phone_number
-  %br
-  - if @profile.phone_number_verified?
-    Phone number verified.
-  - else
-    = button_to "Send verification code via sms!", { action: :send_verification_code }, method: :post
-    = form_tag phone_number_code_verify_profile_path do
-      = text_field_tag 'phone_number_code'
-      = submit_tag "#{t('users.profile.phone_number_code.verify')}"
+  .row
+    .col-md-3
+      %ul.list-group
+        %li.list-group-item
+          First name:
+          = @profile.first_name
+        %li.list-group-item
+          Last name:
+          = @profile.last_name
+        %li.list-group-item
+          Phone number:
+          = @profile.phone_number
+        %li.list-group-item
+          %ul.list-group
+            - if @profile.phone_number_verified?
+              %li.list-group-item
+                Phone number verified.
+            - else
+              %li.list-group-item
+                = button_to "Send verification code via sms!", send_verification_code_profile_path, method: :post, class: 'btn btn-default'
+              %li.list-group-item
+                = form_tag phone_number_code_verify_profile_path do
+                  = text_field_tag 'phone_number_code'
+                  = submit_tag "#{t('users.profile.phone_number_code.verify')}", class: 'btn btn-default'

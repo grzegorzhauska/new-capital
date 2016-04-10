@@ -1,16 +1,27 @@
-%h3
-  = t('users.profile.basic_settings')
-= form_for @profile, url: profile_path, html: { method: :put } do |f|
-  - if @profile.errors.any?
-    %ul
-      - @profile.errors.full_messages.each do |msg|
-        %li
-          = msg
-  = f.text_field :first_name
-  %br
-  = f.text_field :last_name
-  %br
-  = f.text_field :phone_number
-  %br
-  / TODO: Messy translation missing html span
-  = f.submit "#{t('users.profile.update')}"
+.container
+  .row
+    .col-md-3
+      = form_for @profile, url: profile_path, html: { method: :put }, class: 'form-horizontal' do |f|
+        = field_set_tag do
+          %legend Edit
+
+          .control-group
+            - if @profile.errors.any?
+              %div{ class: "alert alert-danger" }
+                - @profile.errors.full_messages.each do |msg|
+                  = content_tag :div, msg
+          .control-group
+            = label_tag :first_name, 'First name', class: 'control-label'
+            .controls
+              = f.text_field :first_name
+          .control-group
+            = label_tag :last_name, 'Last name', class: 'control-label'
+            .controls
+              = f.text_field :last_name
+          .control-group
+            = label_tag :phone_number, 'Phone number', class: 'control-label'
+            .controls
+              = f.text_field :phone_number
+          .form-actions
+            / TODO: Messy translation missing html span
+            = submit_tag "#{t('users.profile.update')}", class: 'btn btn-default'
