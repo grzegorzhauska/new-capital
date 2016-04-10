@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'devise-bootstrap-views'
 gem 'haml'
 gem "haml-rails", "~> 0.9"
 gem 'bootstrap-sass'
