@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20160412071406) do
     t.integer  "before_volume"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "title"
+    t.string   "title",         null: false
   end
 
   create_table "reset_volume_transfers", force: :cascade do |t|
