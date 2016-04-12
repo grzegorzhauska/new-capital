@@ -1,38 +1,34 @@
-.box
-  .box-header
-    %span.title= ''
-    %ul.box-toolbar
-
-  .box-content
-    %table.table.table-normal
-      %thead
-        %tr
-          %th
-            From
-          %th
-            To
-          %th
-            Amount
-          %th
-            After volume tax
-          %th
-            Date
-          %th
-            Kind
-      %tbody
-        - @transfer_histories.map(&:transfer).each do |transfer|
-          %tr
-            %td
-              = transfer.from_id
-            %td
-              = transfer.to_id
-            %td
-              = transfer.amount
-            %td
-              = transfer.after_tax
-            %td
-              = transfer.created_at
-            %td
-              = transfer.class
+.container
+  .row
+    .col-md-3
+      Title
+    .col-md-1
+      From
+    .col-md-1
+      To
+    .col-md-1
+      Amount
+    .col-md-1
+      After volume tax
+    .col-md-1
+      Date
+    .col-md-2
+      Kind
+- @transfer_histories.map(&:transfer).each do |transfer|
+  .row
+    .col-md-3
+      = transfer.title
+    .col-md-1
+      = transfer.from_id
+    .col-md-1
+      = transfer.to_id
+    .col-md-1
+      = transfer.amount
+    .col-md-1
+      = transfer.after_tax
+    .col-md-1
+      = transfer.created_at
+    .col-md-2
+      = transfer.class
     / .table-footer
     /   = paginate @companies

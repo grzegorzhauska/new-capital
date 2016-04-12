@@ -16,7 +16,7 @@ class RegularTransfersController < ApplicationController
   end
 
   def transfer_params
-    params.permit(:to_id, :amount)
+    params.permit(:to_id, :amount, :title)
       .merge(from_id: current_user.personal_account.id,
              from_type: current_user.personal_account.class,
              to_type: current_user.personal_account.class)

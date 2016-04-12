@@ -6,11 +6,15 @@
           %legend Make Transfer
 
           .control-group
-            = label_tag :to_id, 'Account number:', class: 'control-label'
+            = label_tag :title, 'Title', class: 'control-label'
+            .controls
+              = text_field_tag :title
+          .control-group
+            = label_tag :to_id, 'Account number', class: 'control-label'
             .controls
               = number_field_tag :to_id
           .control-group
-            = label_tag :amount, 'Amount:', class: 'control-label'
+            = label_tag :amount, 'Amount', class: 'control-label'
             .controls
               = number_field_tag :amount
           .form-actions

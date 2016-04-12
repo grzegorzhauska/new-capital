@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408141739) do
+ActiveRecord::Schema.define(version: 20160412071406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160408141739) do
     t.integer  "before_volume"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "title"
   end
 
   create_table "reset_volume_transfers", force: :cascade do |t|

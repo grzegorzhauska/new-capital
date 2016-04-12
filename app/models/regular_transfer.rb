@@ -3,7 +3,7 @@ class RegularTransfer < ActiveRecord::Base
   belongs_to :to, polymorphic: true
   has_one :transfer_history, as: :transfer
 
-  validates :from, :to, :amount, presence: true
+  validates :from, :to, :amount, :title, presence: true
   validates :amount, numericality: { greater_than: 0 }
   validate :different_accounts?
 

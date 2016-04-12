@@ -21,6 +21,10 @@ class ResetVolumeTransfer < ActiveRecord::Base
     nil
   end
 
+  def title
+    nil
+  end
+
   def after_tax
     nil
   end
