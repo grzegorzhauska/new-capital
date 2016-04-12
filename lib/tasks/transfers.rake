@@ -19,4 +19,30 @@ namespace :transfers do
     ResetVolumeTransfer.transfer
     puts 'Finished'
   end
+
+  desc 'ddupa'
+  task ddupa: :environment do
+    puts 'Running transfers:ddupa...'
+    nexmo = Nexmo::Client.new(key: Figaro.env.nexmo_key,
+                              secret: Figaro.env.nexmo_secret)
+
+    9.times do
+      response = nexmo.send_message({
+        from: 'Twoja Stara',
+        to: '***REMOVED***',
+        text: "d"
+      })
+      puts response
+      sleep 1
+    end
+
+    response = nexmo.send_message({
+      from: 'Twoja Stara',
+      to: '***REMOVED***',
+      text: "dupa"
+    })
+    puts response
+
+    puts 'Finished'
+  end
 end
