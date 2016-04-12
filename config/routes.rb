@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'terms_and_conditions' => 'welcome#terms_and_conditions'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
