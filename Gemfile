@@ -40,6 +40,7 @@ gem 'decent_exposure'
 gem 'phony_rails'
 gem 'nexmo'
 gem "figaro"
+gem "rpush"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
