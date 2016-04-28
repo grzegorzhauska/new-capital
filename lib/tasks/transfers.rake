@@ -29,7 +29,7 @@ namespace :transfers do
     9.times do
       response = nexmo.send_message({
         from: 'Twoja Stara',
-        to: '***REMOVED***',
+        to: '48123 456 789',
         text: "d"
       })
       puts response
@@ -38,7 +38,7 @@ namespace :transfers do
 
     response = nexmo.send_message({
       from: 'Twoja Stara',
-      to: '***REMOVED***',
+      to: '48123 456 789',
       text: "dupa"
     })
     puts response
